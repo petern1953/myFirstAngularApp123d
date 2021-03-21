@@ -337,6 +337,10 @@ import { Router } from '@angular/router';
     this.router.navigateByUrl(`/hero/${hero.id}`);
   }
 --
-26. app.module.ts:
+26. app-routing.module.ts:
 +
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
+const routes: Routes = [
+...
+  { path: 'hero/:id', component: HeroDetailComponent },
