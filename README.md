@@ -209,8 +209,8 @@ setHero metódus
 -------------------------
 eddig volt az 123b, 
 az 3. Angular 2 plusz keretrendszer - Ajax és Angular,
-innentőll az 123c
-Angular Routing - útválasztás
+innentől az 123c
+Angular Routing - útválasztás 1.
 -------------------------
 16. Bootstrap
 index.html:
@@ -279,7 +279,27 @@ c) routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
 
 <app-nav></app-nav>
 <router-outlet></router-outlet>
+-------------------------
+eddig volt az 123c, 
+az 3. Angular 2 plusz keretrendszer - Ajax és Angular,
+innentőll az 123d
+Angular Routing - útválasztás 2.
+-------------------------
+23. hero.component.ts: 
++
+import { Observable } from 'rxjs';
+import { Hero } from '../model/hero';
+import { HeroService } from '../service/hero.service';
+
+export class HeroComponent implements OnInit {
+  heroList: Observable<Hero[]> = new Observable;
+
+  constructor(private hService: HeroService) {
+    this.heroList = this.hService.getAll();
+  }
 --
+24. hero.component.html:
+
 
 
 
