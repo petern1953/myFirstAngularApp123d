@@ -282,7 +282,7 @@ c) routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
 -------------------------
 eddig volt az 123c, 
 az 3. Angular 2 plusz keretrendszer - Ajax és Angular,
-innentőll az 123d
+innentől az 123d
 Angular Routing - útválasztás 2.
 -------------------------
 23. hero.component.ts: 
@@ -300,6 +300,43 @@ export class HeroComponent implements OnInit {
 --
 24. hero.component.html:
 
+<div class="row">
+  <div class="col-8 offset-2">
+    <table class="table table-striped">
+      <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Superpower</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroList | async">
+          <td>{{hero.id}}</td>
+          <td>{{hero.name}}</td>
+          <td>{{hero.address}}</td>
+          <td>{{hero.superpower}}</td>
+          <td>
+            <button (click)="jumpToHero(hero)" class="btn btn-info"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+--
+25. hero.component.ts:
 
+import { Router } from '@angular/router';
 
+  constructor(
+    private hService: HeroService,
+    private router: Router
+
+  jumpToHero(hero: Hero): void {
+    this.router.navigateByUrl(`/hero/${hero.id}`);
+  }
+--
+26. app.module.ts:
++
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Hero } from '../model/hero';
 import { HeroService } from '../service/hero.service';
@@ -11,11 +12,17 @@ import { HeroService } from '../service/hero.service';
 export class HeroComponent implements OnInit {
   heroList: Observable<Hero[]> = new Observable;
 
-  constructor(private hService: HeroService) {
+  constructor(
+    private hService: HeroService,
+    private router: Router
+  ) {
     this.heroList = this.hService.getAll();
   }
 
   ngOnInit(): void {
   }
 
+  jumpToHero(hero: Hero): void {
+    this.router.navigateByUrl(`/hero/${hero.id}`);
+  }
 }
