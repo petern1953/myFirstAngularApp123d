@@ -344,3 +344,35 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 const routes: Routes = [
 ...
   { path: 'hero/:id', component: HeroDetailComponent },
+--
+27. hero-detail.component.ts:
+export class HeroDetailComponent implements OnInit {
+  hero: Hero = new Hero();
+
+  constructor(
+    private ar: ActivatedRoute,
+    private hService: HeroService,
+  ) {
+    this.ar.params.subscribe(params => {
+      this.hService.getOne(params.id)
+        .forEach(hero => {
+          this.hero = hero;
+        });
+    });
+  }
+--
+28. hero-detail.component.html:
+appHighlight, appDelay törölve
+
+<ul>
+  <li>
+    <p>{{hero.name | prefix:'Herr'}}</p>
+  </li>
+  <li>
+    <p>{{hero.address}}</p>
+  </li>
+  <li>
+    <p>{{hero.superpower}}</p>
+  </li>
+</ul>
+--
