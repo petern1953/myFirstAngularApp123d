@@ -326,13 +326,13 @@ export class HeroComponent implements OnInit {
 </div>
 --
 25. hero.component.ts:
-
+a) +
 import { Router } from '@angular/router';
-
+b)
   constructor(
     private hService: HeroService,
     private router: Router
-
+c)
   jumpToHero(hero: Hero): void {
     this.router.navigateByUrl(`/hero/${hero.id}`);
   }
